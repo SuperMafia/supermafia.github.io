@@ -1,0 +1,3 @@
+# Come in for the burgers, stay for the coding.
+
+This time, I've experimented with the different animations, using an overall amount of three different "animation" techniques: Mouse Mapping, Complete Randomness, and "Controlled" Randomness. Along with it, all three orbs, along with the background, can change color, by mouse mapping or by setting a random variable. The worst problem I had was that I accidentally created a seizure-inducing program. Also, I've tried to add in an image, but it didn't work as well as I'd thought it would. (What I wanted to do is use the image and manipulate the alpha channel so the image would also be seen, along with the colored balls.)
