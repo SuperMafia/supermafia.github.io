@@ -1,0 +1,3 @@
+# Functions are always oodles of noodles of fun! :D
+
+To make sure that a repeat of last week wouldn't happen, I made sure to use the examples you've put up so I could find out how to make a project like yours. Sadly, I wasn't able to recreate the Maze Game js I've created due to my own confusion on how to use the for() conditional, so I've just created a new js sketch, which involves a stable if/else statement, continuous free-fall, random growing, and random colors. Overall, I was sad I couldn't recreate Maze Game with the objects and variables, though I was able to create a new js project involving it and three seperate functions.
