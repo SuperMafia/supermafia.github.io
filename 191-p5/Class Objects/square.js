@@ -1,25 +1,26 @@
 function Squares(){
-  this.side = 25;
-  this.posX = random(width);
-  this.posY = random(height);
-  this.speedX = 1;
-  this.speedY = 1;
+  this.posX = random((3*width)/8, (5*width)/8);
+  this.posY = random((3*height)/8, (5*height)/8);
+  this.speedX = 2;
+  this.speedY = 2;
   this.dirX = 1;
   this.dirY = 1;
-  this.r = random(255);
+  this.r = random(225,255);
+  this.g = random(0, 113);
+  this.b = random(153, 182);
 }
 
 Squares.prototype.drawSquare = function() {
 
   push();
 
-  rectMode(CENTER);
-  translate(683, 384);
-  fill(this.r, 0, 0);
-  rect(0, 0, this.side, this.side);
+  translate(this.posX, this.posY);
+  fill(this.r, this.g, this.b);
+  noStroke();
+  quad(-25, -25, 15, 0, 25, 25, -15, 0);
 
   pop();
-  this.move();
+  this.moveSquare();
 }
 
 Squares.prototype.moveSquare = function() {
@@ -27,7 +28,7 @@ Squares.prototype.moveSquare = function() {
   this.posY = this.posY + (this.dirY*this.speedY);
   if(this.posX >= width || this.posX <= 0){
     this.dirX = -1*this.dirX;
-    this.speedX = random(5);
+    this.speedX = random(5,25);
     if(this.posX >= width){
       this.posX = width - 1;
     }
@@ -37,7 +38,7 @@ Squares.prototype.moveSquare = function() {
   }
   if(this.posY >= height || this.posY <= 0){
     this.dirY = -1*this.dirY;
-    this.speedY = random(10);
+    this.speedY = random(5,10);
     if(this.posY >= height){
       this.posY = height - 1;
     }

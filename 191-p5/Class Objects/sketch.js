@@ -3,7 +3,7 @@ var squareArray = [];
 function setup() {
   createCanvas(1366, 768);
 
-  for(var i = 0; i < 75; i++){
+  for(var i = 0; i < 300; i++){
     squareArray.push(new Squares(random(256),random(256),random(256)))
   }
 }
