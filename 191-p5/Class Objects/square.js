@@ -1,6 +1,6 @@
 function Squares(){
-  this.posX = random((3*width)/8, (5*width)/8);
-  this.posY = random((3*height)/8, (5*height)/8);
+  this.posX = 50;
+  this.posY = 50;
   this.speedX = 2;
   this.speedY = 2;
   this.dirX = 1;
@@ -17,7 +17,7 @@ Squares.prototype.drawSquare = function() {
   translate(this.posX, this.posY);
   fill(this.r, this.g, this.b);
   noStroke();
-  quad(-25, -25, 15, 0, 25, 25, -15, 0);
+  quad(0, 0, 20, 30, 0, 60, -20, 30);
 
   pop();
   this.moveSquare();
