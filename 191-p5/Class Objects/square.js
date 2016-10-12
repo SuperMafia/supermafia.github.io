@@ -4,7 +4,7 @@ function Squares(){
   this.posY = 1;
   this.speedX = 1;
   this.speedY = 2;
-  this.dirX = 1; //All diamonds move down and right at a speed of 2.
+  this.dirX = 1; //All diamonds move down and right at a speed of 2 and 1 respectively.
   this.dirY = 1;
   this.r = random(225,255); //Allows me to control the colors to just be variants of pink.
   this.g = random(0, 113);
