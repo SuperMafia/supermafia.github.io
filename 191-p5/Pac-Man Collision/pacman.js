@@ -39,7 +39,7 @@ PacMan.prototype.drawPacMan = function(){
     rotate(-PI/2);//Turns it upwards
   }
 
-  tanslate(this.posX, this.posY);
+  translate(this.posX, this.posY);
   fill(this.r, this.g, 0);
   arc(this.posX, this.posY, this.diameter, this.diameter, this.mAng, 0 - this.mAng, PIE);
   fill(0, 0, 0);
@@ -76,7 +76,7 @@ PacMan.prototype.timePacMan = function(){
   if(curTime >= this.tarTime){
     this.changeDirection(); //Executes function changeDirection inside function timePacMan.
   }
-  else(){
+  else {
     this.curTime++
   }
 };
@@ -109,7 +109,7 @@ PacMan.prototype.changeDirection = function(){
   }
 };
 
-PacMan.prototype.disCheck = function(pacArray);{
+PacMan.prototype.disCheck = function(pacArray){
   var minDis = 0;
   var curDis = 0;
   var xDifference = 0;

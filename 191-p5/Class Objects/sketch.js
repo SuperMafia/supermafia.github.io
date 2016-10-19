@@ -4,7 +4,7 @@ function setup() {
   createCanvas(1366, 768);
 
   for(var i = 0; i < 500; i++){
-    squareArray.push(new Squares(random(256),random(256),random(256)))
+    squareArray.push(new Squares())
   }
 }
 
