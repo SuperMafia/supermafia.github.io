@@ -31,15 +31,14 @@ PacMan.prototype.drawPacMan = function(){
   push();
 
   translate(this.posX, this.posY);
-  if(this.direction === 0){ //Empty commands that does nothing.
-  }else if(this.direction === 1){
-    rotate(PI/2);//Turns it downwards
-  }else if(this.direction === 2){
-    scale(-1, 1);//Mirrors it by the Y-Axis (Horizontal Symmetry.)
-  }else if(this.direction === 3){
-    rotate(-PI/2);//Turns it upwards
-  }
-
+  if ( this.direction === 0 ) {
+	} else if ( this.direction === 1 ) {
+		rotate(PI/2);
+	} else if ( this.direction === 2 ) {
+		scale(-1, 1);
+	} else if ( this.direction === 3 ) {
+		rotate(-PI/2);
+	}
   fill(this.r, this.g, 0);
   arc(this.posX, this.posY, this.diameter, this.diameter, this.mAng, 0 - this.mAng, PIE);
   fill(0, 0, 0);
@@ -62,14 +61,15 @@ PacMan.prototype.pacMove = function(){
   if(this.posX + this.radius >= 500){
     this.posX = 500 - this.radius;
     this.xChange = 0;
-  } else if(this.posX - this.radius <= 50){
+  } else if(this.posX - this.radius <= 100){
     this.posX = 50 + this.radius;
     this.xChange = 0;
   }
+  
   if(this.posY + this.radius >= 900){
     this.posY = 900 - this.radius;
     this.yChange = 0;
-  } else if(this.posY - this.radius <= 50){
+  } else if(this.posY - this.radius <= 100){
     this.posY = 50 + this.radius;
     this.yChange = 0;
   }
@@ -92,7 +92,7 @@ PacMan.prototype.changeDirection = function(){
   this.tarTime = random(this.maxTime);
 
   do {
-		newDirection = floor( random(4) );
+		changeDir = floor( random(4) );
 	} while ( changeDir == this.direction );
 
 	this.direction = changeDir;
