@@ -2,7 +2,7 @@ function PacMan (posX, posY){
 //Creation of the Pac-Men
   this.diameter = 50;
   this.radius = this.diameter/2
-  this.eyeDiameter = 12.5;
+  this.eyeDiameter = 10;
   this.r = (200, 255);
   this.g = (200, 255);
 //Position and Other Stuff I need notes on.
@@ -14,11 +14,9 @@ function PacMan (posX, posY){
   this.direction = 0;
   this.maxChange = 4;
   this.wait = false;
-
 //Mouth Animation
   this.mouthAngle = (1/4);
-  this.mouthSpeed = 1/64;
-
+  this.mouthSpeed = 1;
 //Timer
   this.curTime = 0;
   this.maxTime = 4;
@@ -26,10 +24,13 @@ function PacMan (posX, posY){
 };
 
 PacMan.prototype.drawPacMan = function(){
-  push();
+
   this.timePacMan();
   this.pacMove();
 
+  push();
+
+  translate(this.posX, this.posY);
   if(this.direction === 0){ //Empty commands that does nothing.
   }else if(this.direction === 1){
     rotate(PI/2);//Turns it downwards
@@ -39,31 +40,34 @@ PacMan.prototype.drawPacMan = function(){
     rotate(-PI/2);//Turns it upwards
   }
 
-  translate(this.posX, this.posY);
   fill(this.r, this.g, 0);
   arc(this.posX, this.posY, this.diameter, this.diameter, this.mAng, 0 - this.mAng, PIE);
   fill(0, 0, 0);
-  arc(this.posX+12.5, this.posY-12.5, this.eyeDiameter*(2/3), this.eyeDiameter, 1/4*PI, 0 - 1/4*PI, PIE);
+  arc(this.posX+7.5, this.posY-12.5, this.eyeDiameter*(2/3), this.eyeDiameter, 1/4*PI, 0 - 1/4*PI, PIE);
 
   pop();
-  this.movePacMan
 };
 
 PacMan.prototype.pacMove = function(){
+  if(!this.wait){
+    this.posX += this.xChange;
+    this.posY += this.yChange;
+  }
   this.mAng = radians(this.mouthAngle);
   this.mouthAngle = this.mouthAngle + this.mouthSpeed
-  if(this.mouthAngle > 45 || this.mouthAngle <= 0){
+  if(this.mouthAngle > 45 || this.mouthAngle <= 0.5){
     this.mouthSpeed = this.mouthSpeed * -1;
   } //Since I've added on a Pac-Maze border, it'll be 50 less than height and width and 50 more than 0.
-  if(this.posX + this.diameter/2 >= 550){
-    this.posX = 550 - this.radius;
+
+  if(this.posX + this.radius >= 500){
+    this.posX = 500 - this.radius;
     this.xChange = 0;
   } else if(this.posX - this.radius <= 50){
     this.posX = 50 + this.radius;
     this.xChange = 0;
   }
-  if(this.posY + this.radius >= 950){
-    this.posY = 950 - this.radius;
+  if(this.posY + this.radius >= 900){
+    this.posY = 900 - this.radius;
     this.yChange = 0;
   } else if(this.posY - this.radius <= 50){
     this.posY = 50 + this.radius;
@@ -87,10 +91,11 @@ PacMan.prototype.changeDirection = function(){
   this.curTime = 0;
   this.tarTime = random(this.maxTime);
 
-  do{changeDir = floor(4);
-  }while(changeDir = this.direction);
+  do {
+		newDirection = floor( random(4) );
+	} while ( changeDir == this.direction );
 
-  this.direction = changeDir;
+	this.direction = changeDir;
 
   this.change = random(this.maxChange);
 
@@ -117,8 +122,9 @@ PacMan.prototype.disCheck = function(pacArray){
 
   this.wait = false;
   for(var i=0; i < pacArray.length; i++){
-    curDis = (this.posX, this.posY, pacArray[i].posX);
-    minDis = this.radius + abs(this.xChange) + abs(this.yChange), pacArray[i].radius;
+    curDis = (this.posX, this.posY, pacArray.posX);
+    minDis = this.radius + abs(this.xChange) + abs(this.yChange), pacArray.radius;
+
     xDifference = pacArray[i].posX - this.posX;
     yDifference = pacArray[i].posY - this.posY;
     if(this.direction === 0 && curDis <= minDis && xDifference > 0){
