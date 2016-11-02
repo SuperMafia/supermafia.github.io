@@ -39,6 +39,7 @@ PacMan.prototype.drawPacMan = function(){
 	} else if ( this.direction === 3 ) {
 		rotate(-PI/2);
 	}
+
   fill(this.r, this.g, 0);
   arc(this.posX, this.posY, this.diameter, this.diameter, this.mAng, 0 - this.mAng, PIE);
   fill(0, 0, 0);
@@ -65,7 +66,7 @@ PacMan.prototype.pacMove = function(){
     this.posX = 50 + this.radius;
     this.xChange = 0;
   }
-  
+
   if(this.posY + this.radius >= 900){
     this.posY = 900 - this.radius;
     this.yChange = 0;
