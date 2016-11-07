@@ -1,0 +1,111 @@
+{
+  "error": "OK",
+  "limit": 10,
+  "offset": 0,
+  "number_of_page_results": 10,
+  "number_of_total_results": "713",
+  "status_code": 1,
+  "results": [
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-20462/",
+        "id": 20462,
+        "name": "SingStar",
+        "site_detail_url": "http://www.giantbomb.com/singstar/3030-20462/"
+      },
+      "score": 4,
+      "site_detail_url": "http://www.giantbomb.com/reviews/singstar-review/1900-1/"
+    },
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-20455/",
+        "id": 20455,
+        "name": "Haze",
+        "site_detail_url": "http://www.giantbomb.com/haze/3030-20455/"
+      },
+      "score": 2,
+      "site_detail_url": "http://www.giantbomb.com/reviews/haze-review/1900-2/"
+    },
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-20669/",
+        "id": 20669,
+        "name": "Metal Gear Solid 4: Guns of the Patriots",
+        "site_detail_url": "http://www.giantbomb.com/metal-gear-solid-4-guns-of-the-patriots/3030-20669/"
+      },
+      "score": 5,
+      "site_detail_url": "http://www.giantbomb.com/reviews/metal-gear-solid-4-guns-of-the-patriots-review/1900-3/"
+    },
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-20681/",
+        "id": 20681,
+        "name": "Poker Smash",
+        "site_detail_url": "http://www.giantbomb.com/poker-smash/3030-20681/"
+      },
+      "score": 4,
+      "site_detail_url": "http://www.giantbomb.com/reviews/poker-smash-review/1900-4/"
+    },
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-20655/",
+        "id": 20655,
+        "name": "Battlefield: Bad Company",
+        "site_detail_url": "http://www.giantbomb.com/battlefield-bad-company/3030-20655/"
+      },
+      "score": 5,
+      "site_detail_url": "http://www.giantbomb.com/reviews/battlefield-bad-company-review/1900-5/"
+    },
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-20534/",
+        "id": 20534,
+        "name": "LEGO Indiana Jones: The Original Adventures",
+        "site_detail_url": "http://www.giantbomb.com/lego-indiana-jones-the-original-adventures/3030-20534/"
+      },
+      "score": 3,
+      "site_detail_url": "http://www.giantbomb.com/reviews/lego-indiana-jones-the-original-adventures-review/1900-6/"
+    },
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-20488/",
+        "id": 20488,
+        "name": "Robert Ludlum's The Bourne Conspiracy",
+        "site_detail_url": "http://www.giantbomb.com/robert-ludlums-the-bourne-conspiracy/3030-20488/"
+      },
+      "score": 3,
+      "site_detail_url": "http://www.giantbomb.com/reviews/robert-ludlums-the-bourne-conspiracy-review/1900-7/"
+    },
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-5648/",
+        "id": 5648,
+        "name": "Burnout Paradise",
+        "site_detail_url": "http://www.giantbomb.com/burnout-paradise/3030-5648/"
+      },
+      "score": 5,
+      "site_detail_url": "http://www.giantbomb.com/reviews/burnout-paradise-review/1900-8/"
+    },
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-11865/",
+        "id": 11865,
+        "name": "Professor Layton and the Curious Village",
+        "site_detail_url": "http://www.giantbomb.com/professor-layton-and-the-curious-village/3030-11865/"
+      },
+      "score": 5,
+      "site_detail_url": "http://www.giantbomb.com/reviews/professor-layton-and-the-curious-village-review/1900-9/"
+    },
+    {
+      "game": {
+        "api_detail_url": "http://www.giantbomb.com/api/game/3030-20588/",
+        "id": 20588,
+        "name": "Super Smash Bros. Brawl",
+        "site_detail_url": "http://www.giantbomb.com/super-smash-bros-brawl/3030-20588/"
+      },
+      "score": 4,
+      "site_detail_url": "http://www.giantbomb.com/reviews/super-smash-bros-brawl-review/1900-10/"
+    }
+  ],
+  "version": "1.0"
+}
