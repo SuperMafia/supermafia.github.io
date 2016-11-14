@@ -21,3 +21,5 @@ function getReview(results){
 }
 
 // Originated from: http://www.giantbomb.com/api/reviews/?api_key=6b6f1eef5d5ddc08447936197965d53e210c2074&format=json&limit=10&field_list=game,score,site_detail_url
+// http.send(data) (line 5131 on p5.js that's causing me problems.)
+// Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource
