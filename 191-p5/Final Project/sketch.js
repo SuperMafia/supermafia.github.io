@@ -48,7 +48,6 @@ function setup() {
  quicksandSink.setCollider(0, 0, 64, 79);
  shantae.addAnimation("quicksandjump", "jump/shantae_jump_1.png", "jump/shantae_land_1.png", "jump/shantae_land_2.png", "jump/shantae_land_3.png", "jump/shantae_land_4.png");
  quicksand.addAnimation("quicksand", "resources/quicksand_1.png", "resources/quicksand_2.png", "resources/quicksand_3.png", "resources/quicksand_4.png");
- enemy.addAnimation("enemy", "resources/goomba1.png", "resources/goomba2.png");
 
   gameOver = true;
   updateSprites(false);
@@ -86,6 +85,7 @@ function draw() {
 
   for(var i = 0; i < 10; i++){
     var enemy = createSprite(random(ground.position.x[i]), random(ground.position.y[i]));
+    enemy.addAnimation("enemy", "resources/goomba1.png", "resources/goomba2.png");
   }
 
   if(shantae.velocity.y > 0.1){
