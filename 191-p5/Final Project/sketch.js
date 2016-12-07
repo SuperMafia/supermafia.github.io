@@ -10,6 +10,7 @@ var music, sound;
 var enemy;
 var cactusImg, treeImg;
 var shantaeHurt
+var gameOver
 // var frameCount = 0;
 
 function preload(){
