@@ -84,8 +84,8 @@ function draw() {
   }
 
   for(var i = 0; i < 10; i++){
-    var enemy = createSprite(random(ground.position.x[i]), random(ground.position.y[i]));
-    enemy.addAnimation("enemy", "resources/goomba1.png", "resources/goomba2.png");
+    enemy = createSprite(random(ground.position.x[i]), random(ground.position.y[i]));
+    var enemyAnimation = enemy.addAnimation("enemy", "resources/goomba1.png", "resources/goomba2.png");
   }
 
   if(shantae.velocity.y > 0.1){
