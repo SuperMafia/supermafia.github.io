@@ -156,13 +156,6 @@ function mousePressed(){
   }
 }
 
-funtion(gameOver){
-  textAlign(CENTER);
-  text("Shantae (C) Wayforward, all sprites are from Spriter's Resource. Music from YouTube.", width/2, 20);
-  sound.setVolume(0.3);
-  sound.play();
-}
-
 function newGame(){
   gameOver = false;
   updateSprites(true);
@@ -172,3 +165,9 @@ function newGame(){
   ground.position.x = 1000;
   ground.position.y = 300;
 }
+
+/*
+textAlign(CENTER);
+text("Shantae (C) Wayforward, all sprites are from Spriter's Resource. Music from YouTube.", width/2, 20);
+sound.setVolume(0.3);
+sound.play(); */
