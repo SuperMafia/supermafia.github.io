@@ -36,7 +36,7 @@ function setup() {
   ground.addImage(loadImage("resources/ground.png"));
   quicksand = createSprite(144,560);
   quicksandSink = createSprite(144, 560);
-  enemy = new Group();
+  // enemy = new Group();
 
   var myAnimation = shantae.addAnimation("idle", "idle/r_shantae_idle_1.png", "idle/r_shantae_idle_2.png", "idle/r_shantae_idle_3.png", "idle/r_shantae_idle_4.png", "idle/r_shantae_idle_5.png", "idle/r_shantae_idle_6.png", "idle/r_shantae_idle_7.png", "idle/r_shantae_idle_8.png", "idle/r_shantae_idle_9_0.png", "idle/r_shantae_idle_9_1.png", "idle/r_shantae_idle_9_2.png", "idle/r_shantae_idle_9_3.png");
  shantae.addAnimation("walk", "walk/r_shantae_walk_1.png", "walk/r_shantae_walk_2.png", "walk/r_shantae_walk_3.png", "walk/r_shantae_walk_4.png", "walk/r_shantae_walk_5.png", "walk/r_shantae_walk_6.png", "walk/r_shantae_walk_7.png", "walk/r_shantae_walk_8.png", "walk/r_shantae_walk_9_0.png", "walk/r_shantae_walk_9_1.png");
@@ -82,12 +82,12 @@ function draw() {
   } if (shantae.position.y > SCENE_H-15){
     shantae.position.y = SCENE_H-15;
   }
-
+/*
   for(var i = 0; i < 10; i++){
     enemy = createSprite(random(ground.position.x[i]), random(ground.position.y[i]));
     var enemyAnimation = enemy.addAnimation("enemy", "resources/goomba1.png", "resources/goomba2.png");
   }
-
+*/
   if(shantae.velocity.y > 0.1){
     shantae.changeAnimation("fall")
   }else if(shantae.velocity.y < -0.1){
