@@ -83,7 +83,7 @@ function draw() {
     shantae.position.y = SCENE_H-15;
   }
 
-  for(var i = 0, i < 10, i++){
+  for(var i = 0; i < 10; i++){
     var enemy = createSprite(random(ground.position.x[i]), random(ground.position.y[i]));
   }
 
