@@ -6,17 +6,18 @@ var JUMP = 10;
 var SCENE_W = 2000;
 var SCENE_H = 600;
 var bg;
-var music, sound;
+var music, sound, jump, damage;
 var enemy;
 var cactusImg, treeImg;
-var shantaeHurt
-var gameOver
-// var frameCount = 0;
+var hitCounter = 0;
+var gameOver;
 
 function preload(){
-  //This is the music I chose to use for my "game".
+  //This is the music I chose to use for my "game", which is Scuttle Town from Shantae and the Pirate's Curse. Game Over is from Sega Rally.
   music = loadSound('music/scuttletown_loop.wav')
   sound = loadSound('music/gameover.mp3')
+  jump = loadSound('sound/Jump.wav')
+  damage = loadSound('sound/ShantaeDamaged.wav')
 }
 
 function setup() {
@@ -26,14 +27,13 @@ function setup() {
  cactusImg = loadImage("resources/cactus.png");
  treeImg = loadImage("resources/tree.png");
  // I had to set the volume very low, since it will otherwise blow the ears out of everyone in the room.
- music.setVolume(0.05);
- music.loop();
  // Establishing a variable called "myAnimation" that holds all the animation in set-up. Use var shantae to create a sprite at pos X, pos Y.
   shantae = createSprite(25, 534);
   shantae.maxSpeed.x = 3;
 //  shantae.friction = 0.5;
   ground = createSprite(1000, 300);
   ground.addImage(loadImage("resources/ground.png"));
+  cactus = createSprite(398, 546);
   quicksand = createSprite(144,560);
   quicksandSink = createSprite(144, 560);
   // enemy = new Group();
@@ -44,13 +44,15 @@ function setup() {
  shantae.addAnimation("jump", "jump/shantae_jump_1.png", "jump/shantae_jump_2.png", "jump/shantae_jump_3.png");
  shantae.addAnimation("fall", "jump/shantae_jump_4.png", "jump/shantae_jump_5.png", "jump/shantae_jump_6.png", "jump/shantae_jump_7.png");
 // shantae.addAnimation("land", "jump/shantae_land_1.png", "jump/shantae_land_2.png", "jump/shantae_land_3.png", "jump/shantae_land_4.png");
+ shantae.addAnimation("die", "resources/shantaedie.png");
  quicksandSink.addAnimation("quicksandsink", "resources/quicksand_sink.png");
  quicksandSink.setCollider(0, 0, 64, 79);
  shantae.addAnimation("quicksandjump", "jump/shantae_jump_1.png", "jump/shantae_land_1.png", "jump/shantae_land_2.png", "jump/shantae_land_3.png", "jump/shantae_land_4.png");
  quicksand.addAnimation("quicksand", "resources/quicksand_1.png", "resources/quicksand_2.png", "resources/quicksand_3.png", "resources/quicksand_4.png");
+ cactus.addAnimation("cactus", "resources/cactus.png");
+ cactus.setCollider(0, 0, 16, 16);
 
   gameOver = true;
-  updateSprites(false);
 }
 
 function draw() {
@@ -65,7 +67,6 @@ function draw() {
   drawSprites();
 
   camera.position.x = shantae.position.x
-//  camera.position.y = shantae.position.y
 
   if(camera.position.x <= 1000){
     camera.position.x = 1000;
@@ -88,9 +89,9 @@ function draw() {
     var enemyAnimation = enemy.addAnimation("enemy", "resources/goomba1.png", "resources/goomba2.png");
   }
 */
-  if(shantae.velocity.y > 0.1){
+  if(shantae.velocity.y > 0.1 && keyIsDown(RIGHT_ARROW)){
     shantae.changeAnimation("fall")
-  }else if(shantae.velocity.y < -0.1){
+  }else if(shantae.velocity.y < -0.1 && keyIsDown(RIGHT_ARROW)){
     shantae.changeAnimation("jump")
   }
   if(ground.overlapPixel(shantae.position.x, shantae.position.y+25)== false){
@@ -123,6 +124,8 @@ function draw() {
   if(keyWentDown(UP_ARROW)){
     shantae.mirrorX(random(-1, 1));
     shantae.velocity.y = -JUMP;
+    jump.setVolume(0.1);
+    jump.play();
     }
   else if(keyIsDown(RIGHT_ARROW)){
     shantae.changeAnimation("walk");
@@ -144,10 +147,24 @@ function draw() {
     shantae.mirrorX(random(-1, 1));
     shantae.velocity.x = 0;
   }
-}
-//  camera.off();
-  shantae.debug = mouseIsPressed;
-  quicksand.debug = mouseIsPressed;
+    while(shantae.collide(cactus)){
+      console.log("Shantae got hit by cactus.");
+      shantae.hitCounter = (shantae.hitCounter + 1)/2
+      damage.setVolume(0.05);
+      damage.play();
+      if(shantae.hitCounter > 6){
+        shantaeDie();
+      }
+    }
+    if(shantae.position.y >= height-8){
+      console.log("Shantae fell into a pit.");
+      shantae.changeAnimation("die");
+      shantae.rotationSpeed = 5;
+      shantae.velocity.x = random(-2, 2);
+      shantae.velocity.y = random(-5, -25);
+      shantaeDie();
+    }
+  }
 }
 
 function mousePressed(){
@@ -158,16 +175,25 @@ function mousePressed(){
 
 function newGame(){
   gameOver = false;
-  updateSprites(true);
   shantae.position.x = 25;
   shantae.position.y = 534;
   shantae.velocity.x = 0;
   ground.position.x = 1000;
   ground.position.y = 300;
+  shantae.hitCounter = 0;
+  sound.stop();
+  music.setVolume(0.05);
+  music.loop();
 }
 
-/*
-textAlign(CENTER);
-text("Shantae (C) Wayforward, all sprites are from Spriter's Resource. Music from YouTube.", width/2, 20);
-sound.setVolume(0.3);
-sound.play(); */
+function shantaeDie(){
+  textAlign(CENTER);
+  textSize(40);
+  textFont("TimesNewRoman");
+  text("Shantae (C) Wayforward, all sprites are from Spriter's Resource. Music from YouTube.", width/2, 40);
+  text("Game Over, Yeeaaaaaaah!", width/2, 80);
+  music.stop();
+  sound.setVolume(0.3);
+  sound.play();
+  gameOver = true;
+}
