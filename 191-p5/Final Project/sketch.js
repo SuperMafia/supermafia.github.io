@@ -150,8 +150,10 @@ function draw() {
     if(shantae.collide(cactus)){
       console.log("Shantae got hit by cactus.");
       shantae.hitCounter = shantae.hitCounter + 1
+      if(shantae.hitCounter % 10 === 0){
       damage.setVolume(0.05);
       damage.play();
+    }
       if(shantae.hitCounter > 60){
         shantaeDie();
       }
