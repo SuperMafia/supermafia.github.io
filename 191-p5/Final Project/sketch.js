@@ -33,10 +33,16 @@ function setup() {
 //  shantae.friction = 0.5;
   ground = createSprite(1000, 300);
   ground.addImage(loadImage("resources/ground.png"));
-  cactus = createSprite(398, 546);
   quicksand = createSprite(144,560);
   quicksandSink = createSprite(144, 560);
   // enemy = new Group();
+  cactus = new Group();
+  for(var i = 0; i <= 10; i++){
+    var newCactus = createSprite(random(100, ground.position.x), random(ground.position.y));
+    newCactus.addAnimation("cactus", "resources/cactus.png");
+    newCactus.setCollider(0, 0, 16, 16);
+    cactus.add(newCactus);
+  }
 
   var myAnimation = shantae.addAnimation("idle", "idle/r_shantae_idle_1.png", "idle/r_shantae_idle_2.png", "idle/r_shantae_idle_3.png", "idle/r_shantae_idle_4.png", "idle/r_shantae_idle_5.png", "idle/r_shantae_idle_6.png", "idle/r_shantae_idle_7.png", "idle/r_shantae_idle_8.png", "idle/r_shantae_idle_9_0.png", "idle/r_shantae_idle_9_1.png", "idle/r_shantae_idle_9_2.png", "idle/r_shantae_idle_9_3.png");
  shantae.addAnimation("walk", "walk/r_shantae_walk_1.png", "walk/r_shantae_walk_2.png", "walk/r_shantae_walk_3.png", "walk/r_shantae_walk_4.png", "walk/r_shantae_walk_5.png", "walk/r_shantae_walk_6.png", "walk/r_shantae_walk_7.png", "walk/r_shantae_walk_8.png", "walk/r_shantae_walk_9_0.png", "walk/r_shantae_walk_9_1.png");
@@ -49,8 +55,6 @@ function setup() {
  quicksandSink.setCollider(0, 0, 64, 79);
  shantae.addAnimation("quicksandjump", "jump/shantae_jump_1.png", "jump/shantae_land_1.png", "jump/shantae_land_2.png", "jump/shantae_land_3.png", "jump/shantae_land_4.png");
  quicksand.addAnimation("quicksand", "resources/quicksand_1.png", "resources/quicksand_2.png", "resources/quicksand_3.png", "resources/quicksand_4.png");
- cactus.addAnimation("cactus", "resources/cactus.png");
- cactus.setCollider(0, 0, 16, 16);
 
   gameOver = true;
 }
