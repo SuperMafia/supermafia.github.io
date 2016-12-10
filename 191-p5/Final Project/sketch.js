@@ -37,8 +37,8 @@ function setup() {
   quicksandSink = createSprite(144, 560);
   // enemy = new Group();
   cactus = new Group();
-  for(var i = 0; i <= 10; i++){
-    var newCactus = createSprite(random(100, ground.position.x), random(ground.position.y));
+  for(var i = 0; i <= 4; i++){
+    var newCactus = createSprite(960+(16*i), 584-(i*16));
     newCactus.addAnimation("cactus", "resources/cactus.png");
     newCactus.setCollider(0, 0, 16, 16);
     cactus.add(newCactus);
@@ -55,7 +55,6 @@ function setup() {
  quicksandSink.setCollider(0, 0, 64, 79);
  shantae.addAnimation("quicksandjump", "jump/shantae_jump_1.png", "jump/shantae_land_1.png", "jump/shantae_land_2.png", "jump/shantae_land_3.png", "jump/shantae_land_4.png");
  quicksand.addAnimation("quicksand", "resources/quicksand_1.png", "resources/quicksand_2.png", "resources/quicksand_3.png", "resources/quicksand_4.png");
-
   gameOver = true;
 }
 
@@ -69,6 +68,8 @@ function draw() {
   fill(0);
   background(bg);
   drawSprites();
+
+  cactus.collide(ground);
 
   camera.position.x = shantae.position.x
 
@@ -93,11 +94,11 @@ function draw() {
     var enemyAnimation = enemy.addAnimation("enemy", "resources/goomba1.png", "resources/goomba2.png");
   }
 */
-  if(shantae.velocity.y > 0.1 && keyIsDown(RIGHT_ARROW)){
+  if(shantae.velocity.y > 0.1){
     shantae.changeAnimation("fall")
-  }else if(shantae.velocity.y < -0.1 && keyIsDown(RIGHT_ARROW)){
+  }else if(shantae.velocity.y <= -9){
     shantae.changeAnimation("jump")
-    jump.setVolume(0.1);
+    jump.setVolume(1);
     jump.play();
   }
   if(ground.overlapPixel(shantae.position.x, shantae.position.y+25)== false){
@@ -130,6 +131,7 @@ function draw() {
   if(keyWentDown(UP_ARROW)){
     shantae.mirrorX(random(-1, 1));
     shantae.velocity.y = -JUMP;
+    console.log(shantae.velocity.y);
     }
   else if(keyIsDown(RIGHT_ARROW)){
     shantae.changeAnimation("walk");
@@ -154,7 +156,7 @@ function draw() {
     if(shantae.collide(cactus)){
       console.log("Shantae got hit by cactus.");
       shantae.hitCounter = shantae.hitCounter + 1
-      if(shantae.hitCounter % 10 === 0){
+      if(shantae.hitCounter % 15 === 0){
       damage.setVolume(0.05);
       damage.play();
     }
@@ -162,12 +164,9 @@ function draw() {
         shantaeDie();
       }
     }
-    if(shantae.position.y >= height-8){
+    if(shantae.position.y >= 585){
       console.log("Shantae fell into a pit.");
       shantae.changeAnimation("die");
-      shantae.rotationSpeed = 5;
-      shantae.velocity.x = random(-2, 2);
-      shantae.velocity.y = random(-5, -25);
       shantaeDie();
     }
   }
