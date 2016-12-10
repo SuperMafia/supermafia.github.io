@@ -93,6 +93,8 @@ function draw() {
     shantae.changeAnimation("fall")
   }else if(shantae.velocity.y < -0.1 && keyIsDown(RIGHT_ARROW)){
     shantae.changeAnimation("jump")
+    jump.setVolume(0.1);
+    jump.play();
   }
   if(ground.overlapPixel(shantae.position.x, shantae.position.y+25)== false){
     shantae.velocity.y += GRAVITY;
@@ -124,8 +126,6 @@ function draw() {
   if(keyWentDown(UP_ARROW)){
     shantae.mirrorX(random(-1, 1));
     shantae.velocity.y = -JUMP;
-    jump.setVolume(0.1);
-    jump.play();
     }
   else if(keyIsDown(RIGHT_ARROW)){
     shantae.changeAnimation("walk");
@@ -147,12 +147,12 @@ function draw() {
     shantae.mirrorX(random(-1, 1));
     shantae.velocity.x = 0;
   }
-    while(shantae.collide(cactus)){
+    if(shantae.collide(cactus)){
       console.log("Shantae got hit by cactus.");
-      shantae.hitCounter = (shantae.hitCounter + 1)/2
+      shantae.hitCounter = shantae.hitCounter + 1
       damage.setVolume(0.05);
       damage.play();
-      if(shantae.hitCounter > 6){
+      if(shantae.hitCounter > 60){
         shantaeDie();
       }
     }
