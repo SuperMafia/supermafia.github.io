@@ -1,0 +1,2 @@
+# The End Times (On top of The World...)
+Yep, that's right. I am somehow at the apex of this semester. Now, I will give you all that you need on here. My video and PDF describing the technical aspects of my journey with blood, tears, and hardship is up there for all to read and watch about. Special thanks to EternalLight and Nai255 for the Shantae sprites and jdaster64 for the tile sheet containing the cactus, quicksand, and the pieces used for the ground sprites.
