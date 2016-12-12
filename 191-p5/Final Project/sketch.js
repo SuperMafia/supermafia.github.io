@@ -38,7 +38,7 @@ function setup() {
   // enemy = new Group();
   cactus = new Group();
   for(var i = 0; i <= 4; i++){
-    var newCactus = createSprite(960+(16*i), 584-(i*16));
+    var newCactus = createSprite(960+(32*i), 584-(i*32));
     newCactus.addAnimation("cactus", "resources/cactus.png");
     newCactus.setCollider(0, 0, 16, 16);
     cactus.add(newCactus);
@@ -201,4 +201,5 @@ function shantaeDie(){
   sound.setVolume(0.3);
   sound.play();
   gameOver = true;
+
 }
