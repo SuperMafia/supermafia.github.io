@@ -135,7 +135,7 @@ function draw() {
       shantae.velocity.x = 0;
     }
   }else if(shantae.velocity.y < -9){ //Should load up the jump sound first before allowing the jump animation to play out.
-    jump.setVolume(1);
+    jump.setVolume(0.1);
     jump.play();
   }else if(shantae.velocity.y < -0.1){ //Trying to keep the animation in playing, but it'll load in the other keyIsDown functions between -0.1 and 0.1. Also, sound does play multiple frames.
     shantae.changeAnimation("jump");
